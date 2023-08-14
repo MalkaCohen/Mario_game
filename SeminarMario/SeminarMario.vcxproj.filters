@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Infrastructure">
+      <UniqueIdentifier>{bc09a0e2-e393-4c99-80f5-261ca9a1757d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Practice">
+      <UniqueIdentifier>{fa13f3d5-7199-4a36-a323-b72e0c5a39a5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pracrice.cpp">
+      <Filter>Practice</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Practice</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="pracrice_Day2.cpp" />
+    <ClCompile Include="SlimeEntity.cpp" />
+    <ClCompile Include="LivesEntity.cpp" />
+    <ClCompile Include="ScoreEntity.cpp" />
+    <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="Timer.cpp">
+      <Filter>Practice</Filter>
+    </ClCompile>
+    <ClCompile Include="HeroEntity.cpp" />
+    <ClCompile Include="EntitiesPool.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h">
+      <Filter>Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Physics.h" />
+    <ClInclude Include="SlimeEntity.h" />
+    <ClInclude Include="LivesEntity.h" />
+    <ClInclude Include="ScoreEntity.h" />
+    <ClInclude Include="Observer.h" />
+    <ClInclude Include="Timer.h">
+      <Filter>Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="HeroEntity.h" />
+    <ClInclude Include="EntitiesPool.h" />
+  </ItemGroup>
+</Project>
