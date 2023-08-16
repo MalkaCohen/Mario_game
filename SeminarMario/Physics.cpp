@@ -6,7 +6,7 @@ using namespace cv;
 using namespace std;
 /// //////////////////////////////////////////
 
-// @2: Read this function and try to understand what it does. Use Image Watch !
+
 bool checkPixelLevelCollision(IPhysicsComponent const* first, IPhysicsComponentPtr const& other)
 {
 	cv::Mat const& mask_First = first->getCollisionMask();
@@ -17,7 +17,7 @@ bool checkPixelLevelCollision(IPhysicsComponent const* first, IPhysicsComponentP
 	Point TL_first = first->getTL();
 	Point TL_other = other->getTL();
 	
-	// ROI = Reagion of Interest
+
 	Rect firstROI(TL_first, TL_first + Point(mask_First.size()));
 	Rect othersROI(TL_other, TL_other + Point(mask_Other.size()));
 	Rect intersection = firstROI & othersROI;
@@ -197,5 +197,4 @@ void BoundedPhysicsDecorator::test()
 {
 	Point rb(_base->getTL().x + _base->getCollisionMask().size().width, _base->getTL().y);
 	if(!_bounds.contains(_base->getTL())||!_bounds.contains(rb)) ;
-	// _base->TL.x < _bounds.x + _bounds.width - _base->getCollisionMask().size().width;
 }

@@ -21,7 +21,7 @@ void EntityState::update()
 	if (physicsFinished)
 		Notify(Event{ EventSenders::SENDER_ENTITY_STATE, EventTypes::EVENT_PHYSICS, EventCodes::ENTITY_PHYSICS_FINISHED });
 	if (graphicsFinished) {
-		Notify(Event{ EventSenders::SENDER_ENTITY_STATE,EventTypes::EVENT_GRAPHICS,EventCodes::ENTITY_PHYSICS_FINISHED });
+		Notify(Event{ EventSenders::SENDER_ENTITY_STATE,EventTypes::EVENT_GRAPHICS,EventCodes::ENTITY_GRAPHICS_FINISHED });
 	}
 }
 

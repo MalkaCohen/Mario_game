@@ -40,13 +40,13 @@ bool SingleAnimationGraphics::update()
 }
 
 //////////////////////////////////////////////////
-LivesGraphics::LivesGraphics(Frame& frame ) :_singleLife(frame)
+LivesGraphics::LivesGraphics(Frame& frame ) :_singleLife(frame), _livesCount(3)
 {
-    reset(5);
+   // reset(5);
 }
 void LivesGraphics::reset(int code)
 {
-    _livesCount = code;
+    _livesCount = /* count of reset lives*/ 3;
 }
 bool LivesGraphics::update()
 {
@@ -58,7 +58,7 @@ void LivesGraphics::draw(cv::Mat& canvas, cv::Point const& topLeft)
     Point curr_topLeft = topLeft;
     for (int i = 0; i < _livesCount; i++)
     {
-        curr_topLeft.x -= _singleLife.image.cols*1.2;
+        curr_topLeft.x -= _singleLife.image.cols* /*The space between the hearts*/ 1.2;
         drawFrame(_singleLife, canvas, curr_topLeft);
     }
 }

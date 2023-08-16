@@ -45,31 +45,26 @@ EntityStatePtr createHeroState(
 		break;
 	case HERO_RUN_LEFT:
 		physicsPtr.reset(new ConstVelocityPhysics(Point(-frameSize.width / 10, 0)));
-		// @4: TODO
 		break;
 	case HERO_DUCK:
 		physicsPtr.reset(new FixedWidgetPhysics());
-		// @4: TODO
 		break;
 	case HERO_STAY_DUCK:
 		physicsPtr.reset(new FixedWidgetPhysics());
-		// @4: TODO
 		break;
 	case HERO_STAND_AFTER_DUCK:
 		physicsPtr.reset(new FixedWidgetPhysics());
-		// @4: TODO
 		break;
 	case HERO_JUMP:
-		///////////מגרילה מספרים!!!!!!!!!!
+		//?
 		physicsPtr.reset(new JumpPhysics(1370 / 11 / animation->numFrames(), 745 / 4 / animation->numFrames(), 4));
-		// @4: TODO
 		break;
 	default:
 		throw std::exception("Unknown physics state!");
 	}
 
 	IPhysicsComponentPtr boundedPhysicsDecorator =
-		make_shared<BoundedPhysicsDecorator>(physicsPtr, Rect{ 0,0,1370, 745 });
+		make_shared<BoundedPhysicsDecorator>(physicsPtr, Rect{ 0,0,SCREEN_WIDTH, SCREEֹ_HEIGHT });
 
 	return make_shared<EntityState>(graphicsPtr, boundedPhysicsDecorator);
 
@@ -88,7 +83,7 @@ EntityPtr createHero(std::string const& rootAnimationsFolder)
 	auto duck = createHeroState(root / "duckDown", HeroStates::HERO_DUCK);
 	auto stayDuck = createHeroState(root / "duckStay", HeroStates::HERO_STAY_DUCK);
 	auto standAfterDuck = createHeroState(root / "standAfterDuck", HeroStates::HERO_STAND_AFTER_DUCK);
-	// @4: TOOD: add states: runLeft, duck, stayDuck, standAfterDuck
+	
 
 	idle->addState(Event{ EventSenders::SENDER_KEYBOARD, EventTypes::EVENT_KEY_PRESSED, EventCodes::KEY_RIGHT }, runRight);
 	idle->addState(Event{ EventSenders::SENDER_KEYBOARD, EventTypes::EVENT_KEY_PRESSED, EventCodes::KEY_LEFT }, runLeft);
@@ -113,9 +108,7 @@ EntityPtr createHero(std::string const& rootAnimationsFolder)
 
 	standAfterDuck->addState(Event{ EventSenders::SENDER_ENTITY_STATE, EventTypes::EVENT_GRAPHICS, EventCodes::ENTITY_GRAPHICS_FINISHED }, idle);
 
-	//  @4: TOOD: add all events here... 
-
-	// ... 
+	
 	EntityPtr hero(new Entity(idle));
 
 
@@ -127,7 +120,7 @@ EntityPtr createHero(std::string const& rootAnimationsFolder)
 	duck->Register(hero);
 	stayDuck->Register(hero);
 	standAfterDuck->Register(hero);
-	//  @4: TOOD: add all states here... 
+	
 
 	return hero;
 }

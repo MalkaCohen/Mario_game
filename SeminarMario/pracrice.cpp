@@ -9,6 +9,7 @@
 #include "Timer.h"
 #include "HeroEntity.h"
 #include "EntitiesPool.h"
+#include "Config.h"
 
 using namespace cv;
 
@@ -17,10 +18,10 @@ using namespace cv;
 int main()
 {
 	Mat background = imread(R"(../Animations/background.png)", IMREAD_UNCHANGED);
-	resize(background, background, Size(1370, 745));
+	resize(background, background, Size(SCREEN_WIDTH,SCREEÉ_HEIGHT));
 
 	auto slime = CreateSlimeEnemy(R"(../Animations/SlimeOrange)");
-	slime->reset(Point(background.size().width / 35, background.size().height *2.35 / 3));
+	slime->reset(Point(SCREEN_WIDTH / 35, DEFAULT_SILME_Y));
 	
 	EntitiesPool slimeEntities;
 	slimeEntities.insert(slime);
@@ -28,12 +29,12 @@ int main()
 
 
 	EntityPtr hero = createHero(R"(../Animations/Hero)");
-	hero->reset(Point(background.size().width / 35, background.size().height * 2 / 3));
+	hero->reset(Point(DEFAULT_HERO_X, DEFAULT_HERO_Y));
 	
-	auto lives = CreateLives(R"(../Animations/heart.png)", Point(background.size().width * 95 / 100, background.size().height * 1 / 17));
+	auto lives = CreateLives(R"(../Animations/heart.png)", Point(DEFAULT_LIVES_X, DEFAULT_LIVES_Y));
 
-	auto score = CreateScore(1.2, FONT_HERSHEY_SIMPLEX);
-	score->reset(Point(background.size().width * 1 / 15, background.size().height * 1 / 10));
+	auto score = CreateScore(/*fontScale*/1.2, FONT_HERSHEY_SIMPLEX);
+	score->reset(Point(DEFAULT_SCORE_X, DEFAULT_SCORE_Y));
 
 	Timer timer(/*freq. ms=*/100);
 	timer.Register(slime);
@@ -52,7 +53,7 @@ int main()
 		{
 			bool is_collision = hero->checkCollision(*inUse[i]);
 			if (is_collision) {
-				hero->reset(Point{ hero->getTL().x - 50,hero->getTL().y });
+				hero->reset(Point{ hero->getTL().x - 50,DEFAULT_HERO_Y});
 				int randomPlace = std::rand() % (canvas.size().width - inUse[i]->getSize().x);
 				inUse[i]->reset(Point{ randomPlace,inUse[i]->getTL().y });
 			}
